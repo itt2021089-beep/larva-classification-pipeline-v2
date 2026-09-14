@@ -2,8 +2,8 @@
   "package": "safezone_v2",
   "mode": "full",
   "built": "2026-09-14",
-  "file_count": 49,
-  "total_bytes": 371526522,
+  "file_count": 50,
+  "total_bytes": 371534043,
   "files": [
     {
       "path": "ATTRIBUTIONS.md",
@@ -39,6 +39,11 @@
       "path": "verify_package.py",
       "bytes": 1016,
       "sha256": "02cde1a5012bd3ef66c66b1075383be6d6a9fe2292f47b81d55fb98bcd319403"
+    },
+    {
+      "path": ".streamlit/config.toml",
+      "bytes": 427,
+      "sha256": "1d8786b1ffbfbcc13c568b2e4d6b443a7d30076fcd5804af1da2e2e8181a6e8a"
     },
     {
       "path": "results/v2/convnext_tiny/best_model.pth",
@@ -202,8 +207,8 @@
     },
     {
       "path": "v2/app.py",
-      "bytes": 12963,
-      "sha256": "0d72de1f5232d77d4f2c49640f4fcc5d7c265108b235d549d95f3db21b529425"
+      "bytes": 19799,
+      "sha256": "bcfd47ecf7a949d7a78582134e7b2780f68862bb8d87d3519b71b5a4d451d0b6"
     },
     {
       "path": "v2/calibrate_lite.py",
@@ -227,8 +232,8 @@
     },
     {
       "path": "v2/package.py",
-      "bytes": 14834,
-      "sha256": "e35264d54a59b77ddc7ff27e709ade4fe1e1fde2eb7cf7b46aa9fe4949901c0c"
+      "bytes": 15092,
+      "sha256": "2fc331d2b0ddf7038cefcfb71067f08c50077b22c13bf36299d75e8473bfc21a"
     },
     {
       "path": "v2/pipeline.py",

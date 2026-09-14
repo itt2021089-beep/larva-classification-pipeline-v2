@@ -1,0 +1,10 @@
+# Streamlit's default primary colour is red, which it uses for progress bars,
+# sliders and the selected segmented-control option. In this app a red bar sits
+# directly beside a green "Record" verdict on the batch table and reads as an
+# error rather than as a confidence level, so the primary colour is set to the
+# green used in the page header.
+[theme]
+primaryColor = "#2e7d32"
+
+[browser]
+gatherUsageStats = false

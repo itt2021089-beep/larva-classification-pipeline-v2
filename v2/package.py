@@ -34,7 +34,7 @@ DIST = os.path.join(ROOT, "dist_v2")
 # v2/pipeline.py, v2/app.py and v2/api.py: torch, torchvision, PIL, numpy,
 # streamlit, fastapi -- plus stage1.model for the Stage 1 architecture.
 CODE_DIRS = ["v2", "stage1"]
-CODE_FILES = ["requirements-app.txt"]
+CODE_FILES = ["requirements-app.txt", ".streamlit/config.toml"]
 
 LITE_MODEL = "convnext_tiny"
 SAMPLES_PER_CLASS = 3
@@ -242,7 +242,11 @@ def build(mode, args):
         copytree(os.path.join(ROOT, d), os.path.join(pkg, d))
         print("  [code] %s/" % d)
     for f in CODE_FILES:
-        shutil.copy2(os.path.join(ROOT, f), os.path.join(pkg, f))
+        # CODE_FILES may name a file inside a directory (.streamlit/config.toml),
+        # so the parent has to exist before copy2.
+        dst = os.path.join(pkg, *f.split("/"))
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        shutil.copy2(os.path.join(ROOT, *f.split("/")), dst)
         print("  [code] %s" % f)
 
     cal = json.load(open(os.path.join(ROOT, "results", "v2", "final",
