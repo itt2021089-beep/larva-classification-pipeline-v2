@@ -37,7 +37,7 @@ from v2 import pipeline
 # "auto" rather than "expanded": on a phone Streamlit renders an expanded
 # sidebar as a full-screen overlay, so forcing it open hid the whole app behind
 # the accuracy panel until the visitor found the close arrow.
-st.set_page_config(page_title="Safe Zone AI — Larva Classifier",
+st.set_page_config(page_title="Safe Zone AI — Larva Classifier V2",
                    page_icon="🦟", layout="wide",
                    initial_sidebar_state="auto")
 
@@ -54,7 +54,7 @@ st.markdown("""
   @media (prefers-color-scheme: dark) {
     :root { --ok:#5cc76a; --warn:#ffa94d; --grey:#9aa0a6; }
   }
-  .block-container { padding-top: 2.1rem; max-width: 1240px; }
+  .block-container { padding-top: 2.9rem; max-width: 1240px; }
 
   .band { background:linear-gradient(100deg,#1b5e20 0%,#2e7d32 45%,#43a047 100%);
           border-radius:14px; padding:1.15rem 1.5rem 1.25rem;
@@ -112,7 +112,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown(
-    '<div class="band"><h1>🦟 Safe Zone AI — Larva Classifier</h1>'
+    '<div class="band"><h1>🦟 Safe Zone AI — Larva Classifier V2</h1>'
     '<p>Photograph a mosquito larva with your phone — on a hand, on tissue '
     'paper, or in a tray of water — and get the genus.</p></div>',
     unsafe_allow_html=True)
