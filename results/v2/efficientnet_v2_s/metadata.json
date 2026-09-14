@@ -1,0 +1,278 @@
+{
+  "backbone": "efficientnet_v2_s",
+  "seed": 42,
+  "class_mapping": {
+    "0": "aedes",
+    "1": "anopheles",
+    "2": "culex",
+    "3": "unknown_objects"
+  },
+  "counts": {
+    "train": {
+      "aedes": 897,
+      "anopheles": 225,
+      "culex": 521,
+      "unknown_objects": 571
+    },
+    "val": {
+      "aedes": 208,
+      "anopheles": 54,
+      "culex": 124,
+      "unknown_objects": 134
+    },
+    "test_field": {
+      "aedes": 112,
+      "anopheles": 48,
+      "culex": 129,
+      "unknown_objects": 92
+    },
+    "test_lab": {
+      "aedes": 124,
+      "anopheles": 48,
+      "culex": 40,
+      "unknown_objects": 68
+    }
+  },
+  "domains": {
+    "train": {
+      "field": 1071,
+      "lab": 1143
+    },
+    "val": {
+      "field": 273,
+      "lab": 247
+    },
+    "test_field": {
+      "field": 381
+    },
+    "test_lab": {
+      "lab": 280
+    }
+  },
+  "best_epoch": 19,
+  "best_reason": "macro-F1 +0.0061",
+  "epochs_run": 27,
+  "train_minutes": 28.46209140618642,
+  "validation": {
+    "all": {
+      "loss": 0.5875131005414564,
+      "n": 520,
+      "accuracy": 0.8326923076923077,
+      "balanced_accuracy": 0.8264048348003572,
+      "f1_macro": 0.8264192622888276,
+      "species_accuracy": 0.7849740932642487,
+      "min_class_recall": 0.75,
+      "per_class": {
+        "aedes": {
+          "precision": 0.8442211055276382,
+          "recall": 0.8076923076923077,
+          "f1": 0.8255528255528255,
+          "support": 208
+        },
+        "anopheles": {
+          "precision": 0.8235294117647058,
+          "recall": 0.7777777777777778,
+          "f1": 0.8,
+          "support": 54
+        },
+        "culex": {
+          "precision": 0.7265625,
+          "recall": 0.75,
+          "f1": 0.7380952380952381,
+          "support": 124
+        },
+        "unknown_objects": {
+          "precision": 0.9154929577464789,
+          "recall": 0.9701492537313433,
+          "f1": 0.9420289855072463,
+          "support": 134
+        }
+      },
+      "confusion_matrix": [
+        [
+          168,
+          4,
+          30,
+          6
+        ],
+        [
+          5,
+          42,
+          4,
+          3
+        ],
+        [
+          24,
+          4,
+          93,
+          3
+        ],
+        [
+          2,
+          1,
+          1,
+          130
+        ]
+      ]
+    },
+    "field": {
+      "loss": 0.5875131005414564,
+      "n": 273,
+      "accuracy": 0.7216117216117216,
+      "balanced_accuracy": 0.74158767477733,
+      "f1_macro": 0.7350460699591651,
+      "species_accuracy": 0.6521739130434783,
+      "min_class_recall": 0.5595238095238095,
+      "per_class": {
+        "aedes": {
+          "precision": 0.6438356164383562,
+          "recall": 0.5595238095238095,
+          "f1": 0.5987261146496815,
+          "support": 84
+        },
+        "anopheles": {
+          "precision": 0.7777777777777778,
+          "recall": 0.7777777777777778,
+          "f1": 0.7777777777777778,
+          "support": 36
+        },
+        "culex": {
+          "precision": 0.6666666666666666,
+          "recall": 0.6896551724137931,
+          "f1": 0.6779661016949152,
+          "support": 87
+        },
+        "unknown_objects": {
+          "precision": 0.8378378378378378,
+          "recall": 0.9393939393939394,
+          "f1": 0.8857142857142857,
+          "support": 66
+        }
+      },
+      "confusion_matrix": [
+        [
+          47,
+          4,
+          27,
+          6
+        ],
+        [
+          3,
+          28,
+          2,
+          3
+        ],
+        [
+          21,
+          3,
+          60,
+          3
+        ],
+        [
+          2,
+          1,
+          1,
+          62
+        ]
+      ]
+    },
+    "lab": {
+      "loss": 0.5875131005414564,
+      "n": 247,
+      "accuracy": 0.9554655870445344,
+      "balanced_accuracy": 0.9113690303206432,
+      "f1_macro": 0.9241212121212121,
+      "species_accuracy": 0.9385474860335196,
+      "min_class_recall": 0.7777777777777778,
+      "per_class": {
+        "aedes": {
+          "precision": 0.9603174603174603,
+          "recall": 0.9758064516129032,
+          "f1": 0.968,
+          "support": 124
+        },
+        "anopheles": {
+          "precision": 0.9333333333333333,
+          "recall": 0.7777777777777778,
+          "f1": 0.8484848484848485,
+          "support": 18
+        },
+        "culex": {
+          "precision": 0.868421052631579,
+          "recall": 0.8918918918918919,
+          "f1": 0.88,
+          "support": 37
+        },
+        "unknown_objects": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 68
+        }
+      },
+      "confusion_matrix": [
+        [
+          121,
+          0,
+          3,
+          0
+        ],
+        [
+          2,
+          14,
+          2,
+          0
+        ],
+        [
+          3,
+          1,
+          33,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          68
+        ]
+      ]
+    }
+  },
+  "checkpoint": "results/v2/efficientnet_v2_s/best_model.pth",
+  "checkpoint_sha256": "97a5196d28606358b19cf8cf6e53ea6dd2e98111bd0ff97994f9dcbafa11c050",
+  "test_note": "TEST NOT EVALUATED HERE - v2.evaluate does that once, after the ensemble is fixed on validation.",
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.5.1+cu121",
+    "torchvision": "0.20.1+cu121",
+    "gpu": "NVIDIA GeForce RTX 3050 6GB Laptop GPU"
+  },
+  "config": {
+    "backbone": "efficientnet_v2_s",
+    "seed": 42,
+    "image_size": 224,
+    "per_class_in_batch": 8,
+    "num_workers": 4,
+    "bbox_crop": false,
+    "blur_enabled": false,
+    "blur_kernel": 3,
+    "blur_sigma": 0.6,
+    "dropout": 0.3,
+    "label_smoothing": 0.05,
+    "weight_decay": 0.0001,
+    "loss": "cb_focal",
+    "cb_beta": 0.999,
+    "focal_gamma": 1.5,
+    "backbone_lr": 5e-05,
+    "classifier_lr": 0.0005,
+    "warmup_epochs": 3,
+    "freeze_backbone_epochs": 2,
+    "epochs": 35,
+    "early_stopping_patience": 8,
+    "amp": true,
+    "grad_clip": 1.0,
+    "select_on": "field",
+    "macro_f1_tolerance": 0.004,
+    "min_anopheles_val_recall": 0.55
+  }
+}

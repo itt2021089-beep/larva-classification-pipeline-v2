@@ -1,0 +1,19 @@
+# Virtual environment (~2GB, rebuilt by run_app.sh/.bat on first launch)
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/

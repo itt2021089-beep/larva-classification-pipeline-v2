@@ -1,0 +1,254 @@
+{
+  "package": "safezone_v2",
+  "mode": "full",
+  "built": "2026-09-14",
+  "file_count": 49,
+  "total_bytes": 371526522,
+  "files": [
+    {
+      "path": "ATTRIBUTIONS.md",
+      "bytes": 341286,
+      "sha256": "087677415e7e9858a4d537cdf38a833e915f3fb7d49d280ede08417a9957b9dc"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3978,
+      "sha256": "03775541552dadf9f246f642af71258048e31a015e8ee608af4172787c9ac9de"
+    },
+    {
+      "path": "requirements-app.txt",
+      "bytes": 834,
+      "sha256": "dfde17edab6e05de06f4114ce37314c624228dafc71b3fe583877eb8b63278f3"
+    },
+    {
+      "path": "run_api.bat",
+      "bytes": 107,
+      "sha256": "336ea4db2b33692a64ea652444b3788f65bc441b58410293fc8c20e65c176af9"
+    },
+    {
+      "path": "run_app.bat",
+      "bytes": 379,
+      "sha256": "6dbac12139799a47b397255718d97eaa6dec386f4b9f14db9b72be9765f02038"
+    },
+    {
+      "path": "run_app.sh",
+      "bytes": 367,
+      "sha256": "d318e1ded090f22c5f0c1701e3fa291332ed98b06b95f5ff9dcabe5ca8c547cc"
+    },
+    {
+      "path": "verify_package.py",
+      "bytes": 1016,
+      "sha256": "02cde1a5012bd3ef66c66b1075383be6d6a9fe2292f47b81d55fb98bcd319403"
+    },
+    {
+      "path": "results/v2/convnext_tiny/best_model.pth",
+      "bytes": 111359668,
+      "sha256": "eda7e70388f1f82054c6562f4f60e4850dd6d52218176384fc5c806807486dc2"
+    },
+    {
+      "path": "results/v2/convnext_tiny/metadata.json",
+      "bytes": 6353,
+      "sha256": "abfa78710b0a504d0c009fe3fee59b9bc6d85f0d85208c1c10c52481577e6531"
+    },
+    {
+      "path": "results/v2/efficientnet_v2_s/best_model.pth",
+      "bytes": 81631756,
+      "sha256": "97a5196d28606358b19cf8cf6e53ea6dd2e98111bd0ff97994f9dcbafa11c050"
+    },
+    {
+      "path": "results/v2/efficientnet_v2_s/metadata.json",
+      "bytes": 6326,
+      "sha256": "a15b62dc7112bbd6bc272304964dfd2adab66e032df53a7ea4038da59f37008c"
+    },
+    {
+      "path": "results/v2/efficientnet_v2_s_320/best_model.pth",
+      "bytes": 81631756,
+      "sha256": "b1ccc24a64871ea961017e75a4e03b6d7017c432d04468e04d45286c1d949bed"
+    },
+    {
+      "path": "results/v2/efficientnet_v2_s_320/metadata.json",
+      "bytes": 6400,
+      "sha256": "c3774a36aed0c5a08020f4faacf8a353ff2a88bdf565ab995494c1be01bbf4d0"
+    },
+    {
+      "path": "results/v2/final/v2_results.json",
+      "bytes": 65161,
+      "sha256": "64467243377c7b7358b04b574a5f9d4d26cddc64ae79e038a184054ce42e0f22"
+    },
+    {
+      "path": "results/v2/stage1_resnet50/best_model.pth",
+      "bytes": 94367102,
+      "sha256": "ef11116efe5957158a83da9188feb29ed207696a59b389b56134290314861e04"
+    },
+    {
+      "path": "results/v2/stage1_resnet50/metadata.json",
+      "bytes": 7652,
+      "sha256": "a4e676b620ded11e822f54aa120246dfd4744e5a7af17926f5970d5b5df984c6"
+    },
+    {
+      "path": "sample_photos/aedes_1.jpg",
+      "bytes": 69835,
+      "sha256": "c017857fcda2fde9d5dd4880840faa241e72d18e00e54701611466d661aec351"
+    },
+    {
+      "path": "sample_photos/aedes_2.jpg",
+      "bytes": 76857,
+      "sha256": "c1b3d1ad63126ed40559f12efc4dde66429ce4cb3502df0e8ecbf30f0a5f331d"
+    },
+    {
+      "path": "sample_photos/aedes_3.jpg",
+      "bytes": 110275,
+      "sha256": "3d4c11e7093c282f4224f4b8c8846e8b0aa3f6edc32ec54e8d32b956e8163443"
+    },
+    {
+      "path": "sample_photos/anopheles_1.jpg",
+      "bytes": 175392,
+      "sha256": "5530938ef1d5cc29ef38d03645d433655780585296a5ac8be16d111aeb55d29e"
+    },
+    {
+      "path": "sample_photos/anopheles_2.jpeg",
+      "bytes": 606365,
+      "sha256": "2000388fd13137643845126d3b0c7951ad3bf1c4c0348a9e0ee07d918f2065f9"
+    },
+    {
+      "path": "sample_photos/anopheles_3.png",
+      "bytes": 193678,
+      "sha256": "7cb74bef647f248756a84acddb60a52449b3a38288cfe454353de18be8d54168"
+    },
+    {
+      "path": "sample_photos/culex_1.jpeg",
+      "bytes": 132803,
+      "sha256": "cb0abfe5be66ca23fae68f238f26ca63a7a7a969ba9dc4403582f09819ef47f1"
+    },
+    {
+      "path": "sample_photos/culex_2.jpg",
+      "bytes": 108925,
+      "sha256": "20a95268ee2cb34bec51e3948be306b6d84a44317eec121a1e283bfc58c12db2"
+    },
+    {
+      "path": "sample_photos/culex_3.jpg",
+      "bytes": 89088,
+      "sha256": "ec85380920e22d4f3ab9119eff944095574dd1fe2bf96d241c05515ef963807b"
+    },
+    {
+      "path": "sample_photos/unknown_objects_1.jpg",
+      "bytes": 79806,
+      "sha256": "4ee4822242ec51be0f0e225ef3679431b8fcd3de2764a7c73ef6ec189ff4f8f6"
+    },
+    {
+      "path": "sample_photos/unknown_objects_2.jpg",
+      "bytes": 151611,
+      "sha256": "0afb7c2143b0517b44ba27f947999924efe61f21c35f6463e2fc247846840c5c"
+    },
+    {
+      "path": "sample_photos/unknown_objects_3.jpg",
+      "bytes": 93535,
+      "sha256": "3dd8332d98356fcf82e2567f2eae1cd572f9c37773ddba6ca1a7b0de09741781"
+    },
+    {
+      "path": "stage1/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "stage1/dataset.py",
+      "bytes": 19395,
+      "sha256": "38dcbcf1777b04d234f1fd3b3fc7701d9eed55351e90f7134f245ed0ce9776e8"
+    },
+    {
+      "path": "stage1/demo_test.py",
+      "bytes": 6717,
+      "sha256": "fe24a16cc9d25c0c39577ac8ea2e1cfe63283b1000cc96caba3e9a67c92109fe"
+    },
+    {
+      "path": "stage1/inference.py",
+      "bytes": 7612,
+      "sha256": "f6bd2fb922f9ee462e9c9169556e9490897970d69328663c654965dbf6de3142"
+    },
+    {
+      "path": "stage1/model.py",
+      "bytes": 3148,
+      "sha256": "6e2ea53cfa01c68ebe2def9c31582eeb2a7d3882d3c925e5ee60f695673c7957"
+    },
+    {
+      "path": "stage1/package_demo.py",
+      "bytes": 7328,
+      "sha256": "6e28b9cfa109e1bc0b23294565693f98f0278ca38381f7e022c6ca047597281a"
+    },
+    {
+      "path": "stage1/retrain_final.py",
+      "bytes": 12516,
+      "sha256": "50d9c3e687d3db1e218ec73c53979c1e147b7fd6404edda8d5bb3917f05afeb8"
+    },
+    {
+      "path": "stage1/train.py",
+      "bytes": 15763,
+      "sha256": "16724266c84011a059f4418ed62f0edcc4b2e4fd53f74a0ff22661f5f3088ecb"
+    },
+    {
+      "path": "v2/DEPLOY.md",
+      "bytes": 4236,
+      "sha256": "5e62097ffc26ece4da4c22696e9b5b27a972cd905cc208785b1269eddfcef53a"
+    },
+    {
+      "path": "v2/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "v2/api.py",
+      "bytes": 5675,
+      "sha256": "abef9e6a90f97b2da591176878971bef9f48b97aade3f5e4efe736e5b97941d0"
+    },
+    {
+      "path": "v2/app.py",
+      "bytes": 12963,
+      "sha256": "0d72de1f5232d77d4f2c49640f4fcc5d7c265108b235d549d95f3db21b529425"
+    },
+    {
+      "path": "v2/calibrate_lite.py",
+      "bytes": 3343,
+      "sha256": "7c6882b0743dc64dd25069bc734276ebd1aabbb8525e44d4d1fca8859f3e48a4"
+    },
+    {
+      "path": "v2/curate.py",
+      "bytes": 12588,
+      "sha256": "335ebe2b90872e7c9a6a9e9d90af840796b47418ed43264071057bfc364d866d"
+    },
+    {
+      "path": "v2/evaluate.py",
+      "bytes": 13355,
+      "sha256": "f649e1ad204af86276f9a6f9ab7b62116c7c4e08709e344a2e2d33fbe762d410"
+    },
+    {
+      "path": "v2/fetch_inat.py",
+      "bytes": 12069,
+      "sha256": "091aabf4a57c38b28b9d6dc9d051066669ebe92898154bf14ef1040835f4f84b"
+    },
+    {
+      "path": "v2/package.py",
+      "bytes": 14834,
+      "sha256": "e35264d54a59b77ddc7ff27e709ade4fe1e1fde2eb7cf7b46aa9fe4949901c0c"
+    },
+    {
+      "path": "v2/pipeline.py",
+      "bytes": 10632,
+      "sha256": "5c1cea561a8890a31b7b4b74411f64cbba50b7ed139a8f3bfa840f0fcad33fa8"
+    },
+    {
+      "path": "v2/report.py",
+      "bytes": 11617,
+      "sha256": "54cd5cf9de0e5aa12d0a9249cbdc9f691f03ae0f2e6b6aa0527b040457a27bbe"
+    },
+    {
+      "path": "v2/train.py",
+      "bytes": 20516,
+      "sha256": "493d275280d2c77e67c8f299271f097e87a32693f91327ff2e62fc3b455f88b4"
+    },
+    {
+      "path": "v2/train_stage1.py",
+      "bytes": 13904,
+      "sha256": "98d0bdb756831e36adf09352d55889fed5d15f4f068ad4039d75f1aee27be868"
+    }
+  ]
+}

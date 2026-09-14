@@ -1,0 +1,25 @@
+# Safe Zone AI v2 — APP RUNTIME ONLY (no training dependencies).
+#
+# scikit-learn is deliberately absent: it is used for metrics during training
+# and evaluation, but v2.pipeline / v2.api / v2.app never import it. Verified
+# by importing the pipeline with sklearn blocked. Leaving it out saves ~50 MB
+# on a hosted deployment.
+#
+# These are the versions this app was actually tested against. The CUDA build
+# of torch is what runs locally; the index line below installs the CPU wheels
+# instead, which is what free hosting needs. For a GPU host, drop the
+# --extra-index-url line and install torch from pytorch.org.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.5.1
+torchvision==0.20.1
+numpy==2.4.6
+pillow==12.2.0
+
+# web app
+streamlit==1.63.0
+
+# HTTP API
+fastapi==0.141.1
+uvicorn==0.52.4
+python-multipart==0.0.32

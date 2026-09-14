@@ -1,0 +1,294 @@
+{
+  "architecture": "resnet50",
+  "classes": [
+    "mosquito",
+    "non_mosquito"
+  ],
+  "class_mapping": {
+    "0": "mosquito",
+    "1": "non_mosquito"
+  },
+  "counts": {
+    "train": {
+      "mosquito": 1643,
+      "non_mosquito": 1471
+    },
+    "val": {
+      "mosquito": 386,
+      "non_mosquito": 772
+    },
+    "test_field": {
+      "mosquito": 289,
+      "non_mosquito": 92
+    },
+    "test_lab": {
+      "mosquito": 212,
+      "non_mosquito": 680
+    }
+  },
+  "best_epoch": 5,
+  "epochs_run": 11,
+  "train_minutes": 16.63079241514206,
+  "results": {
+    "val": {
+      "all": {
+        "n": 1158,
+        "accuracy": 0.9792746113989638,
+        "balanced_accuracy": 0.9766839378238341,
+        "f1_macro": 0.9766839378238341,
+        "mosquito_recall": 0.9689119170984456,
+        "non_mosquito_recall": 0.9844559585492227,
+        "per_class": {
+          "mosquito": {
+            "precision": 0.9689119170984456,
+            "recall": 0.9689119170984456,
+            "f1": 0.9689119170984456,
+            "support": 386
+          },
+          "non_mosquito": {
+            "precision": 0.9844559585492227,
+            "recall": 0.9844559585492227,
+            "f1": 0.9844559585492227,
+            "support": 772
+          }
+        },
+        "confusion_matrix": [
+          [
+            374,
+            12
+          ],
+          [
+            12,
+            760
+          ]
+        ]
+      },
+      "loss": 0.17556290554979717,
+      "field": {
+        "n": 273,
+        "accuracy": 0.9340659340659341,
+        "balanced_accuracy": 0.9203996486605182,
+        "f1_macro": 0.9118723098995696,
+        "mosquito_recall": 0.9468599033816425,
+        "non_mosquito_recall": 0.8939393939393939,
+        "per_class": {
+          "mosquito": {
+            "precision": 0.9655172413793104,
+            "recall": 0.9468599033816425,
+            "f1": 0.9560975609756097,
+            "support": 207
+          },
+          "non_mosquito": {
+            "precision": 0.8428571428571429,
+            "recall": 0.8939393939393939,
+            "f1": 0.8676470588235294,
+            "support": 66
+          }
+        },
+        "confusion_matrix": [
+          [
+            196,
+            11
+          ],
+          [
+            7,
+            59
+          ]
+        ]
+      },
+      "lab": {
+        "n": 885,
+        "accuracy": 0.9932203389830508,
+        "balanced_accuracy": 0.9936656274233624,
+        "f1_macro": 0.9895820253641386,
+        "mosquito_recall": 0.994413407821229,
+        "non_mosquito_recall": 0.9929178470254958,
+        "per_class": {
+          "mosquito": {
+            "precision": 0.9726775956284153,
+            "recall": 0.994413407821229,
+            "f1": 0.9834254143646409,
+            "support": 179
+          },
+          "non_mosquito": {
+            "precision": 0.9985754985754985,
+            "recall": 0.9929178470254958,
+            "f1": 0.9957386363636364,
+            "support": 706
+          }
+        },
+        "confusion_matrix": [
+          [
+            178,
+            1
+          ],
+          [
+            5,
+            701
+          ]
+        ]
+      }
+    },
+    "test_field": {
+      "all": {
+        "n": 381,
+        "accuracy": 0.9002624671916011,
+        "balanced_accuracy": 0.8379344064991725,
+        "f1_macro": 0.8561406995230525,
+        "mosquito_recall": 0.9584775086505191,
+        "non_mosquito_recall": 0.717391304347826,
+        "per_class": {
+          "mosquito": {
+            "precision": 0.9141914191419142,
+            "recall": 0.9584775086505191,
+            "f1": 0.9358108108108109,
+            "support": 289
+          },
+          "non_mosquito": {
+            "precision": 0.8461538461538461,
+            "recall": 0.717391304347826,
+            "f1": 0.7764705882352941,
+            "support": 92
+          }
+        },
+        "confusion_matrix": [
+          [
+            277,
+            12
+          ],
+          [
+            26,
+            66
+          ]
+        ]
+      },
+      "loss": 0.3781733159318058,
+      "field": {
+        "n": 381,
+        "accuracy": 0.9002624671916011,
+        "balanced_accuracy": 0.8379344064991725,
+        "f1_macro": 0.8561406995230525,
+        "mosquito_recall": 0.9584775086505191,
+        "non_mosquito_recall": 0.717391304347826,
+        "per_class": {
+          "mosquito": {
+            "precision": 0.9141914191419142,
+            "recall": 0.9584775086505191,
+            "f1": 0.9358108108108109,
+            "support": 289
+          },
+          "non_mosquito": {
+            "precision": 0.8461538461538461,
+            "recall": 0.717391304347826,
+            "f1": 0.7764705882352941,
+            "support": 92
+          }
+        },
+        "confusion_matrix": [
+          [
+            277,
+            12
+          ],
+          [
+            26,
+            66
+          ]
+        ]
+      },
+      "lab": null
+    },
+    "test_lab": {
+      "all": {
+        "n": 892,
+        "accuracy": 0.9887892376681614,
+        "balanced_accuracy": 0.989400665926748,
+        "f1_macro": 0.9846793308371407,
+        "mosquito_recall": 0.9905660377358491,
+        "non_mosquito_recall": 0.9882352941176471,
+        "per_class": {
+          "mosquito": {
+            "precision": 0.963302752293578,
+            "recall": 0.9905660377358491,
+            "f1": 0.9767441860465116,
+            "support": 212
+          },
+          "non_mosquito": {
+            "precision": 0.9970326409495549,
+            "recall": 0.9882352941176471,
+            "f1": 0.9926144756277696,
+            "support": 680
+          }
+        },
+        "confusion_matrix": [
+          [
+            210,
+            2
+          ],
+          [
+            8,
+            672
+          ]
+        ]
+      },
+      "loss": 0.1496032799840508,
+      "field": null,
+      "lab": {
+        "n": 892,
+        "accuracy": 0.9887892376681614,
+        "balanced_accuracy": 0.989400665926748,
+        "f1_macro": 0.9846793308371407,
+        "mosquito_recall": 0.9905660377358491,
+        "non_mosquito_recall": 0.9882352941176471,
+        "per_class": {
+          "mosquito": {
+            "precision": 0.963302752293578,
+            "recall": 0.9905660377358491,
+            "f1": 0.9767441860465116,
+            "support": 212
+          },
+          "non_mosquito": {
+            "precision": 0.9970326409495549,
+            "recall": 0.9882352941176471,
+            "f1": 0.9926144756277696,
+            "support": 680
+          }
+        },
+        "confusion_matrix": [
+          [
+            210,
+            2
+          ],
+          [
+            8,
+            672
+          ]
+        ]
+      }
+    }
+  },
+  "checkpoint": "results/v2/stage1_resnet50/best_model.pth",
+  "checkpoint_sha256": "ef11116efe5957158a83da9188feb29ed207696a59b389b56134290314861e04",
+  "why_retrained": "the v1 Stage 1 rejected 36-42% of genuine field mosquito-larva photos",
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.5.1+cu121"
+  },
+  "config": {
+    "seed": 42,
+    "image_size": 224,
+    "per_class_in_batch": 16,
+    "num_workers": 3,
+    "dropout": 0.4,
+    "label_smoothing": 0.05,
+    "weight_decay": 0.0001,
+    "backbone_lr": 5e-05,
+    "classifier_lr": 0.0005,
+    "warmup_epochs": 2,
+    "freeze_backbone_epochs": 2,
+    "epochs": 22,
+    "early_stopping_patience": 6,
+    "amp": true,
+    "grad_clip": 1.0,
+    "v1_negatives_per_split": 900
+  }
+}
