@@ -1,3 +1,14 @@
+---
+title: Safe Zone AI v2
+emoji: 🦟
+colorFrom: green
+colorTo: blue
+sdk: streamlit
+sdk_version: "1.63.0"
+app_file: v2/app.py
+pinned: false
+---
+
 # Safe Zone AI v2 — mosquito larva classifier
 
 Photograph a larva with a phone, copy the photos to a laptop, upload them here,
