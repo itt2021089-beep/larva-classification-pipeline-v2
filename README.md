@@ -36,12 +36,12 @@ Three possible outcomes per photo:
 | result | what it means | what to do |
 |---|---|---|
 | **Aedes / Anopheles / Culex** | confident identification | record it |
-| **Retake the photo** | below 91% confidence | photograph the specimen again, closer and steadier |
-| **Not a mosquito larva** | Stage 1 rejected it | check it really is a mosquito larva |
+| **Retake the photo** | below 91% confidence — or unsure it is a larva at all | photograph the specimen again, closer and steadier |
+| **Not a mosquito larva** | the larva check is confident it is not one | check it really is a mosquito larva |
 
 **"Retake" is a real answer, not a failure.** Forced to answer every field
 photo the system is 72.2% accurate; on the photos it is confident about it is
-89.9% accurate. A wrong genus recorded confidently is worse than a ten-second
+88.7% accurate. A wrong genus recorded confidently is worse than a ten-second
 retake.
 
 ## How accurate is it, honestly
@@ -49,11 +49,12 @@ retake.
 | | accuracy |
 |---|---|
 | Real smartphone field photos — all images | **72.2%** |
-| Real smartphone field photos — when confident (49% of them) | **89.9%** |
+| Real smartphone field photos — when confident (51% of them) | **88.7%** |
 | Laboratory / microscope images | **93.6%** |
 
-Measured on 381 held-out field photographs and 280 laboratory images, neither
-used for training or for setting the confidence threshold.
+These are the **whole pipeline** — the larva check and the species classifier
+together — for this build, measured on 381 held-out field photographs and 280
+laboratory images, neither used for training or for setting any threshold.
 
 ### What it cannot do
 
@@ -103,6 +104,6 @@ change to the software.
 
 Mode: **full** (convnext_tiny, efficientnet_v2_s, efficientnet_v2_s_320).
 
-Built 2026-09-14 · ICT 4808 Group 08, Rajarata University of Sri Lanka.
+Built 2026-09-30 · ICT 4808 Group 08, Rajarata University of Sri Lanka.
 Field photographs sourced from iNaturalist under CC licences — see
 `ATTRIBUTIONS.md`.

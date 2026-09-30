@@ -37,7 +37,7 @@ from v2 import pipeline
 # "auto" rather than "expanded": on a phone Streamlit renders an expanded
 # sidebar as a full-screen overlay, so forcing it open hid the whole app behind
 # the accuracy panel until the visitor found the close arrow.
-st.set_page_config(page_title="Safe Zone AI — Larva Classifier V2",
+st.set_page_config(page_title="Safe Zone AI — Larva Classifier",
                    page_icon="🦟", layout="wide",
                    initial_sidebar_state="auto")
 
@@ -54,7 +54,7 @@ st.markdown("""
   @media (prefers-color-scheme: dark) {
     :root { --ok:#5cc76a; --warn:#ffa94d; --grey:#9aa0a6; }
   }
-  .block-container { padding-top: 2.9rem; max-width: 1240px; }
+  .block-container { padding-top: 2.1rem; max-width: 1240px; }
 
   .band { background:linear-gradient(100deg,#1b5e20 0%,#2e7d32 45%,#43a047 100%);
           border-radius:14px; padding:1.15rem 1.5rem 1.25rem;
@@ -112,7 +112,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown(
-    '<div class="band"><h1>🦟 Safe Zone AI — Larva Classifier V2</h1>'
+    '<div class="band"><h1>🦟 Safe Zone AI — Larva Classifier</h1>'
     '<p>Photograph a mosquito larva with your phone — on a hand, on tissue '
     'paper, or in a tray of water — and get the genus.</p></div>',
     unsafe_allow_html=True)
@@ -121,10 +121,15 @@ st.markdown(
 @st.cache_resource(show_spinner="Loading models (first run takes ~20 s) …")
 def _load():
     st_ = pipeline.load()
+    # The accuracy shown to users is the whole pipeline's, for the build
+    # actually running — see pipeline.end_to_end_results for why the
+    # calibration file's own test numbers are not used.
+    e2e = pipeline.end_to_end_results(st_["mode"])
     return {"mode": st_["mode"], "threshold": st_["threshold"],
+            "gate_reject_below": st_["gate_reject_below"],
             "models": [m["name"] for m in st_["stage2"]],
             "device": str(st_["device"]),
-            "calibration": st_["calibration"]}
+            "calibration": st_["calibration"], "e2e": e2e}
 
 
 def _step(n, text):
@@ -132,28 +137,31 @@ def _step(n, text):
 
 
 info = _load()
-cal = info["calibration"]
-tf = (cal.get("test") or {}).get("test_field") or {}
-tl = (cal.get("test") or {}).get("test_lab") or {}
+e2e = (info["e2e"] or {}).get("splits") or {}
+ef, el = e2e.get("test_field") or {}, e2e.get("test_lab") or {}
 
 # ---------------------------------------------------------------- sidebar
 with st.sidebar:
     st.markdown("### How accurate is this?")
-    if tf:
-        st.metric("Field photos — all images",
-                  "%.1f%%" % (100 * tf["full"]["accuracy"]))
+    if ef and el:
+        pf, pl = ef["pipeline"], el["pipeline"]
+        st.metric("Field photos — all images", "%.1f%%" % (100 * pf["accuracy"]))
         st.metric("Field photos — when confident",
-                  "%.1f%%" % (100 * tf["gated"]["accuracy"]),
-                  help="on the %.0f%% of photos it answers"
-                       % (100 * tf["coverage"]))
+                  "%.1f%%" % (100 * pf["gated_accuracy"]),
+                  help="on the %.0f%% of photos it answers; it asks for a "
+                       "retake on the rest" % (100 * pf["coverage"]))
         st.metric("Laboratory / microscope images",
-                  "%.1f%%" % (100 * tl["full"]["accuracy"]))
-    st.markdown(
-        '<div class="meta">Measured on %d held-out real smartphone photographs '
-        'and %d laboratory images. Neither set was used for training or for '
-        'tuning the confidence threshold.</div>'
-        % ((tf.get("full") or {}).get("n", 0), (tl.get("full") or {}).get("n", 0)),
-        unsafe_allow_html=True)
+                  "%.1f%%" % (100 * pl["accuracy"]))
+        st.markdown(
+            '<div class="meta">The whole pipeline — the larva check and the '
+            'species classifier together — measured on %d held-out real '
+            'smartphone photographs and %d laboratory images. Neither set was '
+            'used for training or for tuning any threshold.</div>'
+            % (ef["n"], el["n"]), unsafe_allow_html=True)
+    else:
+        st.caption("Accuracy figures unavailable: "
+                   "results/v2/final/end_to_end.json is missing "
+                   "(run python -m v2.eval_end_to_end).")
 
     # Settings live here rather than in the main column so the working area is
     # only ever "photos in, answers out".
@@ -183,9 +191,11 @@ with st.sidebar:
                 unsafe_allow_html=True)
     st.markdown(
         '<div class="meta">Stage 1 ResNet-50 → Stage 2 %s<br>'
-        'mode <b>%s</b> · device %s · abstains below %.2f confidence</div>'
+        'mode <b>%s</b> · device %s · abstains below %.2f confidence · '
+        'Stage 1 rejects below p(larva) %.2f, defers to Stage 2 up to 0.50'
+        '</div>'
         % (", ".join(info["models"]), info["mode"], info["device"],
-           info["threshold"]),
+           info["threshold"], info["gate_reject_below"]),
         unsafe_allow_html=True)
 
 # ----------------------------------------------------------- step 1: input
@@ -225,7 +235,10 @@ with st.container(border=True):
 def _render_single(r, thr, force):
     """Detail view for one photo: verdict card, then the class breakdown."""
     s1 = r["stage1"]
-    if not s1["is_mosquito"]:
+    # Branch on the pipeline's final answer, not on Stage 1's argmax: when
+    # Stage 1 is unsure it defers to Stage 2, so "Stage 1 leaned not-a-larva"
+    # no longer means "rejected".
+    if r["final_class"] == "non_mosquito":
         st.markdown(
             '<div class="card"><span class="pill p-grey">Stage 1 · rejected</span>'
             '<div class="verdict">Not a mosquito larva</div>'
@@ -235,12 +248,14 @@ def _render_single(r, thr, force):
         st.info("If you believe this IS a mosquito larva, move closer and "
                 "retake so the larva fills more of the frame.", icon="ℹ️")
     elif r["abstained"] and not force:
+        why = ("Not sure this is a larva, and leaning" if r.get("gate_deferred")
+               else "Leaning")
         st.markdown(
             '<div class="card warn"><span class="pill p-warn">Retake</span>'
             '<div class="verdict">Not confident enough</div>'
-            '<div class="conf">Leaning <b>%s</b> at %.0f%%, below the %.0f%% '
+            '<div class="conf">%s <b>%s</b> at %.0f%%, below the %.0f%% '
             'threshold.</div></div>'
-            % (pipeline.DISPLAY.get(r.get("best_guess", ""), "—"),
+            % (why, pipeline.DISPLAY.get(r.get("best_guess", ""), "—"),
                100 * r["confidence"], 100 * thr),
             unsafe_allow_html=True)
         st.warning("Move closer, steady the phone, and make sure the whole "
@@ -273,15 +288,20 @@ def _render_single(r, thr, force):
                    " top" if i == 0 else "", pct))
         st.markdown("".join(bars), unsafe_allow_html=True)
 
-    st.markdown('<div class="meta" style="margin-top:.9rem">Stage 1 %s (%.0f%%) '
-                '· %.0f ms</div>'
-                % (s1["class"], 100 * s1["confidence"], r["total_ms"]),
-                unsafe_allow_html=True)
+    if r.get("gate_deferred"):
+        # Stage 1's argmax here is "non_mosquito", which reads as a
+        # contradiction beside a genus verdict unless the deferral is said.
+        s1_txt = ("Larva check unsure (p(larva) %.0f%%), so the species "
+                  "classifier decided" % (100 * s1["probabilities"]["mosquito"]))
+    else:
+        s1_txt = "Stage 1 %s (%.0f%%)" % (s1["class"], 100 * s1["confidence"])
+    st.markdown('<div class="meta" style="margin-top:.9rem">%s · %.0f ms</div>'
+                % (s1_txt, r["total_ms"]), unsafe_allow_html=True)
 
 
 def _row(name, r):
     """One record of the batch table. Keys here are also the CSV columns."""
-    if not r["stage1"]["is_mosquito"]:
+    if r["final_class"] == "non_mosquito":
         verdict, action = "Not a mosquito larva", "skip"
     elif r["abstained"]:
         verdict, action = "Uncertain", "retake"
@@ -290,8 +310,9 @@ def _row(name, r):
     p = (r["stage2"] or {}).get("probabilities", {})
     return {"photo": name, "result": verdict,
             "confidence": round(r["confidence"], 3), "action": action,
-            "stage1": "%s (%.2f)" % (r["stage1"]["class"],
-                                     r["stage1"]["confidence"]),
+            "stage1": "%s (%.2f) %s" % (r["stage1"]["class"],
+                                        r["stage1"]["confidence"],
+                                        r["stage1"].get("decision", "")),
             "aedes": round(p.get("aedes", 0), 3),
             "anopheles": round(p.get("anopheles", 0), 3),
             "culex": round(p.get("culex", 0), 3),

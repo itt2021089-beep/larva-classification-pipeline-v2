@@ -1,0 +1,219 @@
+{
+  "full": {
+    "mode": "full",
+    "ensemble": [
+      "convnext_tiny",
+      "efficientnet_v2_s",
+      "efficientnet_v2_s_320"
+    ],
+    "use_tta": false,
+    "threshold": 0.91,
+    "gate_reject_below": 0.2,
+    "splits": {
+      "test_field": {
+        "n": 381,
+        "stage2_only": {
+          "accuracy": 0.7217847769028871,
+          "ci95": [
+            0.6747438568775573,
+            0.7643978575316956
+          ],
+          "gated_accuracy": 0.898936170212766,
+          "gated_ci95": [
+            0.8475531201326707,
+            0.9343419432946568
+          ],
+          "coverage": 0.49343832020997375,
+          "n_answered": 188
+        },
+        "hard_gate": {
+          "accuracy": 0.7139107611548556,
+          "ci95": [
+            0.6665718573521526,
+            0.7569790269597305
+          ],
+          "gated_accuracy": 0.855072463768116,
+          "gated_ci95": [
+            0.8006469038814203,
+            0.8965589606159085
+          ],
+          "coverage": 0.5433070866141733,
+          "n_answered": 207
+        },
+        "pipeline": {
+          "accuracy": 0.7217847769028871,
+          "ci95": [
+            0.6747438568775573,
+            0.7643978575316956
+          ],
+          "gated_accuracy": 0.8871794871794871,
+          "gated_ci95": [
+            0.8350929087853328,
+            0.924305526954472
+          ],
+          "coverage": 0.5118110236220472,
+          "n_answered": 195
+        },
+        "gate_hard": {
+          "larvae": 289,
+          "larvae_rejected": 12,
+          "larvae_deferred": 0,
+          "larvae_deferred_then_named_correctly_and_confidently": 0,
+          "larvae_deferred_then_retake": 0,
+          "unknown": 92,
+          "unknown_rejected": 66,
+          "unknown_deferred": 0,
+          "unknown_passed_or_deferred_and_caught_by_stage2": 11
+        },
+        "gate_deployed": {
+          "larvae": 289,
+          "larvae_rejected": 4,
+          "larvae_deferred": 8,
+          "larvae_deferred_then_named_correctly_and_confidently": 1,
+          "larvae_deferred_then_retake": 7,
+          "unknown": 92,
+          "unknown_rejected": 55,
+          "unknown_deferred": 11,
+          "unknown_passed_or_deferred_and_caught_by_stage2": 21
+        },
+        "per_class_pipeline": {
+          "aedes": {
+            "n": 112,
+            "recall": 0.6339285714285714,
+            "ci95": [
+              0.5416490959133228,
+              0.717325227645744
+            ]
+          },
+          "anopheles": {
+            "n": 48,
+            "recall": 0.7708333333333334,
+            "ci95": [
+              0.6346046409154885,
+              0.8669230897101095
+            ]
+          },
+          "culex": {
+            "n": 129,
+            "recall": 0.7054263565891473,
+            "ci95": [
+              0.6217387574005973,
+              0.7772326491467494
+            ]
+          },
+          "unknown_objects": {
+            "n": 92,
+            "recall": 0.8260869565217391,
+            "ci95": [
+              0.7360137147263484,
+              0.8900192396483699
+            ]
+          }
+        },
+        "seconds": 16.63859439999942
+      },
+      "test_lab": {
+        "n": 280,
+        "stage2_only": {
+          "accuracy": 0.9357142857142857,
+          "ci95": [
+            0.9006812052885643,
+            0.9589531823417197
+          ],
+          "gated_accuracy": 0.9713114754098361,
+          "gated_ci95": [
+            0.9419767280302621,
+            0.9860353571079876
+          ],
+          "coverage": 0.8714285714285714,
+          "n_answered": 244
+        },
+        "hard_gate": {
+          "accuracy": 0.9321428571428572,
+          "ci95": [
+            0.896456415757464,
+            0.9561317883676538
+          ],
+          "gated_accuracy": 0.963855421686747,
+          "gated_ci95": [
+            0.9327455241388055,
+            0.9808699568579924
+          ],
+          "coverage": 0.8892857142857142,
+          "n_answered": 249
+        },
+        "pipeline": {
+          "accuracy": 0.9357142857142857,
+          "ci95": [
+            0.9006812052885643,
+            0.9589531823417197
+          ],
+          "gated_accuracy": 0.9678714859437751,
+          "gated_ci95": [
+            0.9378935680016842,
+            0.9836320037396749
+          ],
+          "coverage": 0.8892857142857142,
+          "n_answered": 249
+        },
+        "gate_hard": {
+          "larvae": 212,
+          "larvae_rejected": 2,
+          "larvae_deferred": 0,
+          "larvae_deferred_then_named_correctly_and_confidently": 0,
+          "larvae_deferred_then_retake": 0,
+          "unknown": 68,
+          "unknown_rejected": 68,
+          "unknown_deferred": 0,
+          "unknown_passed_or_deferred_and_caught_by_stage2": 0
+        },
+        "gate_deployed": {
+          "larvae": 212,
+          "larvae_rejected": 1,
+          "larvae_deferred": 1,
+          "larvae_deferred_then_named_correctly_and_confidently": 1,
+          "larvae_deferred_then_retake": 0,
+          "unknown": 68,
+          "unknown_rejected": 66,
+          "unknown_deferred": 2,
+          "unknown_passed_or_deferred_and_caught_by_stage2": 2
+        },
+        "per_class_pipeline": {
+          "aedes": {
+            "n": 124,
+            "recall": 0.967741935483871,
+            "ci95": [
+              0.9199872889158152,
+              0.9873855850156749
+            ]
+          },
+          "anopheles": {
+            "n": 48,
+            "recall": 0.7291666666666666,
+            "ci95": [
+              0.5900276538379887,
+              0.834341964383671
+            ]
+          },
+          "culex": {
+            "n": 40,
+            "recall": 0.975,
+            "ci95": [
+              0.8711834051199223,
+              0.9955732825922052
+            ]
+          },
+          "unknown_objects": {
+            "n": 68,
+            "recall": 1.0,
+            "ci95": [
+              0.9465268034119507,
+              1.0000000000000002
+            ]
+          }
+        },
+        "seconds": 12.695669300002919
+      }
+    }
+  }
+}

@@ -33,18 +33,33 @@ from v2 import pipeline
 MAX_BYTES = 20 * 1024 * 1024          # 20 MB - a phone photo is ~2-5 MB
 ALLOWED = {"image/jpeg", "image/png", "image/webp", "image/bmp"}
 
+def _description():
+    # Generated from the measured end-to-end results rather than typed in, so
+    # the figure always describes the whole pipeline of the build being served.
+    text = "Two-stage classifier for mosquito larvae in smartphone photographs.\n\n"
+    e = pipeline.end_to_end_results()
+    if e:
+        f = e["splits"]["test_field"]
+        lab = e["splits"]["test_lab"]
+        text += (
+            "**Measured accuracy (%s build, whole pipeline).** On %d held-out "
+            "real smartphone photographs it is %.1f%% accurate when forced to "
+            "answer every image, and %.1f%% accurate on the %.0f%% it is "
+            "confident enough to answer. On laboratory/microscope images it is "
+            "%.1f%% accurate. It has NOT been validated on Sri Lankan "
+            "specimens.\n\n"
+            % (e["mode"], f["n"], 100 * f["pipeline"]["accuracy"],
+               100 * f["pipeline"]["gated_accuracy"],
+               100 * f["pipeline"]["coverage"],
+               100 * lab["pipeline"]["accuracy"]))
+    return text + ("A result with `abstained: true` means *retake the photo* — "
+                   "it is not a prediction.")
+
+
 app = FastAPI(
     title="Safe Zone AI — mosquito larva classifier",
     version="2.0",
-    description=(
-        "Two-stage classifier for mosquito larvae in smartphone photographs.\n\n"
-        "**Measured accuracy.** On 381 held-out real smartphone photographs the "
-        "pipeline is 72.2% accurate when forced to answer every image, and "
-        "89.9% accurate on the 49% it is confident enough to answer. On "
-        "laboratory/microscope images it is 93.6% accurate. It has NOT been "
-        "validated on Sri Lankan specimens.\n\n"
-        "A result with `abstained: true` means *retake the photo* — it is not "
-        "a prediction."),
+    description=_description(),
 )
 
 # Open CORS so a phone browser or a friend's page can call this during

@@ -2616,5 +2616,600 @@
     ],
     "note": "Single-backbone deployment mode. Threshold calibrated on the SAME field validation subset as the ensemble, because lite's confidence distribution differs. Test splits untouched."
   },
+  "gate": {
+    "reject_below": 0.2,
+    "rule": "largest reject_below whose Stage 1 rejections are correct >= 90% of the time on field validation \u2014 the same bar as Stage 2's genus answers",
+    "chosen_on": "field validation",
+    "target_rejection_precision": 0.9,
+    "stage2_threshold_at_calibration": 0.91,
+    "field_validation": {
+      "n": 273,
+      "chosen": {
+        "reject_below": 0.2,
+        "rejected": 55,
+        "rejection_precision": 0.9090909090909091,
+        "larvae_rejected": 5,
+        "deferred": 15,
+        "pipeline_accuracy": 0.7655677655677655,
+        "pipeline_coverage": 0.608058608058608,
+        "pipeline_confident_accuracy": 0.8855421686746988
+      },
+      "original_gate": {
+        "reject_below": 0.5,
+        "rejected": 70,
+        "rejection_precision": 0.8428571428571429,
+        "larvae_rejected": 11,
+        "deferred": 0,
+        "pipeline_accuracy": 0.7545787545787546,
+        "pipeline_coverage": 0.6410256410256411,
+        "pipeline_confident_accuracy": 0.8571428571428571
+      },
+      "sweep": [
+        {
+          "reject_below": 0.5,
+          "rejected": 70,
+          "rejection_precision": 0.8428571428571429,
+          "larvae_rejected": 11,
+          "deferred": 0,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6410256410256411,
+          "pipeline_confident_accuracy": 0.8571428571428571
+        },
+        {
+          "reject_below": 0.49,
+          "rejected": 70,
+          "rejection_precision": 0.8428571428571429,
+          "larvae_rejected": 11,
+          "deferred": 0,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6410256410256411,
+          "pipeline_confident_accuracy": 0.8571428571428571
+        },
+        {
+          "reject_below": 0.48,
+          "rejected": 70,
+          "rejection_precision": 0.8428571428571429,
+          "larvae_rejected": 11,
+          "deferred": 0,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6410256410256411,
+          "pipeline_confident_accuracy": 0.8571428571428571
+        },
+        {
+          "reject_below": 0.47,
+          "rejected": 70,
+          "rejection_precision": 0.8428571428571429,
+          "larvae_rejected": 11,
+          "deferred": 0,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6410256410256411,
+          "pipeline_confident_accuracy": 0.8571428571428571
+        },
+        {
+          "reject_below": 0.46,
+          "rejected": 69,
+          "rejection_precision": 0.8405797101449275,
+          "larvae_rejected": 11,
+          "deferred": 1,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6410256410256411,
+          "pipeline_confident_accuracy": 0.8571428571428571
+        },
+        {
+          "reject_below": 0.45,
+          "rejected": 69,
+          "rejection_precision": 0.8405797101449275,
+          "larvae_rejected": 11,
+          "deferred": 1,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6410256410256411,
+          "pipeline_confident_accuracy": 0.8571428571428571
+        },
+        {
+          "reject_below": 0.44,
+          "rejected": 69,
+          "rejection_precision": 0.8405797101449275,
+          "larvae_rejected": 11,
+          "deferred": 1,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6410256410256411,
+          "pipeline_confident_accuracy": 0.8571428571428571
+        },
+        {
+          "reject_below": 0.43,
+          "rejected": 69,
+          "rejection_precision": 0.8405797101449275,
+          "larvae_rejected": 11,
+          "deferred": 1,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6410256410256411,
+          "pipeline_confident_accuracy": 0.8571428571428571
+        },
+        {
+          "reject_below": 0.42,
+          "rejected": 69,
+          "rejection_precision": 0.8405797101449275,
+          "larvae_rejected": 11,
+          "deferred": 1,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6410256410256411,
+          "pipeline_confident_accuracy": 0.8571428571428571
+        },
+        {
+          "reject_below": 0.41,
+          "rejected": 69,
+          "rejection_precision": 0.8405797101449275,
+          "larvae_rejected": 11,
+          "deferred": 1,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6410256410256411,
+          "pipeline_confident_accuracy": 0.8571428571428571
+        },
+        {
+          "reject_below": 0.4,
+          "rejected": 68,
+          "rejection_precision": 0.8529411764705882,
+          "larvae_rejected": 10,
+          "deferred": 2,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6373626373626373,
+          "pipeline_confident_accuracy": 0.8620689655172413
+        },
+        {
+          "reject_below": 0.39,
+          "rejected": 68,
+          "rejection_precision": 0.8529411764705882,
+          "larvae_rejected": 10,
+          "deferred": 2,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6373626373626373,
+          "pipeline_confident_accuracy": 0.8620689655172413
+        },
+        {
+          "reject_below": 0.38,
+          "rejected": 67,
+          "rejection_precision": 0.8507462686567164,
+          "larvae_rejected": 10,
+          "deferred": 3,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6336996336996337,
+          "pipeline_confident_accuracy": 0.861271676300578
+        },
+        {
+          "reject_below": 0.37,
+          "rejected": 65,
+          "rejection_precision": 0.8461538461538461,
+          "larvae_rejected": 10,
+          "deferred": 5,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.63003663003663,
+          "pipeline_confident_accuracy": 0.8604651162790697
+        },
+        {
+          "reject_below": 0.36,
+          "rejected": 64,
+          "rejection_precision": 0.859375,
+          "larvae_rejected": 9,
+          "deferred": 6,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6263736263736264,
+          "pipeline_confident_accuracy": 0.8654970760233918
+        },
+        {
+          "reject_below": 0.35,
+          "rejected": 64,
+          "rejection_precision": 0.859375,
+          "larvae_rejected": 9,
+          "deferred": 6,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6263736263736264,
+          "pipeline_confident_accuracy": 0.8654970760233918
+        },
+        {
+          "reject_below": 0.34,
+          "rejected": 64,
+          "rejection_precision": 0.859375,
+          "larvae_rejected": 9,
+          "deferred": 6,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6263736263736264,
+          "pipeline_confident_accuracy": 0.8654970760233918
+        },
+        {
+          "reject_below": 0.33,
+          "rejected": 63,
+          "rejection_precision": 0.8571428571428571,
+          "larvae_rejected": 9,
+          "deferred": 7,
+          "pipeline_accuracy": 0.7545787545787546,
+          "pipeline_coverage": 0.6227106227106227,
+          "pipeline_confident_accuracy": 0.8647058823529412
+        },
+        {
+          "reject_below": 0.32,
+          "rejected": 62,
+          "rejection_precision": 0.8709677419354839,
+          "larvae_rejected": 8,
+          "deferred": 8,
+          "pipeline_accuracy": 0.7582417582417582,
+          "pipeline_coverage": 0.6190476190476191,
+          "pipeline_confident_accuracy": 0.8698224852071006
+        },
+        {
+          "reject_below": 0.31,
+          "rejected": 61,
+          "rejection_precision": 0.8852459016393442,
+          "larvae_rejected": 7,
+          "deferred": 9,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6153846153846154,
+          "pipeline_confident_accuracy": 0.875
+        },
+        {
+          "reject_below": 0.3,
+          "rejected": 61,
+          "rejection_precision": 0.8852459016393442,
+          "larvae_rejected": 7,
+          "deferred": 9,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6153846153846154,
+          "pipeline_confident_accuracy": 0.875
+        },
+        {
+          "reject_below": 0.29,
+          "rejected": 61,
+          "rejection_precision": 0.8852459016393442,
+          "larvae_rejected": 7,
+          "deferred": 9,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6153846153846154,
+          "pipeline_confident_accuracy": 0.875
+        },
+        {
+          "reject_below": 0.28,
+          "rejected": 61,
+          "rejection_precision": 0.8852459016393442,
+          "larvae_rejected": 7,
+          "deferred": 9,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6153846153846154,
+          "pipeline_confident_accuracy": 0.875
+        },
+        {
+          "reject_below": 0.27,
+          "rejected": 61,
+          "rejection_precision": 0.8852459016393442,
+          "larvae_rejected": 7,
+          "deferred": 9,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6153846153846154,
+          "pipeline_confident_accuracy": 0.875
+        },
+        {
+          "reject_below": 0.26,
+          "rejected": 61,
+          "rejection_precision": 0.8852459016393442,
+          "larvae_rejected": 7,
+          "deferred": 9,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6153846153846154,
+          "pipeline_confident_accuracy": 0.875
+        },
+        {
+          "reject_below": 0.25,
+          "rejected": 61,
+          "rejection_precision": 0.8852459016393442,
+          "larvae_rejected": 7,
+          "deferred": 9,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6153846153846154,
+          "pipeline_confident_accuracy": 0.875
+        },
+        {
+          "reject_below": 0.24,
+          "rejected": 60,
+          "rejection_precision": 0.8833333333333333,
+          "larvae_rejected": 7,
+          "deferred": 10,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6153846153846154,
+          "pipeline_confident_accuracy": 0.875
+        },
+        {
+          "reject_below": 0.23,
+          "rejected": 60,
+          "rejection_precision": 0.8833333333333333,
+          "larvae_rejected": 7,
+          "deferred": 10,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6153846153846154,
+          "pipeline_confident_accuracy": 0.875
+        },
+        {
+          "reject_below": 0.22,
+          "rejected": 59,
+          "rejection_precision": 0.8813559322033898,
+          "larvae_rejected": 7,
+          "deferred": 11,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6153846153846154,
+          "pipeline_confident_accuracy": 0.875
+        },
+        {
+          "reject_below": 0.21,
+          "rejected": 57,
+          "rejection_precision": 0.8947368421052632,
+          "larvae_rejected": 6,
+          "deferred": 13,
+          "pipeline_accuracy": 0.7619047619047619,
+          "pipeline_coverage": 0.6117216117216118,
+          "pipeline_confident_accuracy": 0.8802395209580839
+        },
+        {
+          "reject_below": 0.2,
+          "rejected": 55,
+          "rejection_precision": 0.9090909090909091,
+          "larvae_rejected": 5,
+          "deferred": 15,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.19,
+          "rejected": 55,
+          "rejection_precision": 0.9090909090909091,
+          "larvae_rejected": 5,
+          "deferred": 15,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.18,
+          "rejected": 55,
+          "rejection_precision": 0.9090909090909091,
+          "larvae_rejected": 5,
+          "deferred": 15,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.17,
+          "rejected": 54,
+          "rejection_precision": 0.9074074074074074,
+          "larvae_rejected": 5,
+          "deferred": 16,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.16,
+          "rejected": 54,
+          "rejection_precision": 0.9074074074074074,
+          "larvae_rejected": 5,
+          "deferred": 16,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.15,
+          "rejected": 54,
+          "rejection_precision": 0.9074074074074074,
+          "larvae_rejected": 5,
+          "deferred": 16,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.14,
+          "rejected": 53,
+          "rejection_precision": 0.9056603773584906,
+          "larvae_rejected": 5,
+          "deferred": 17,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.13,
+          "rejected": 52,
+          "rejection_precision": 0.9038461538461539,
+          "larvae_rejected": 5,
+          "deferred": 18,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.12,
+          "rejected": 48,
+          "rejection_precision": 0.8958333333333334,
+          "larvae_rejected": 5,
+          "deferred": 22,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.11,
+          "rejected": 47,
+          "rejection_precision": 0.8936170212765957,
+          "larvae_rejected": 5,
+          "deferred": 23,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.1,
+          "rejected": 46,
+          "rejection_precision": 0.8913043478260869,
+          "larvae_rejected": 5,
+          "deferred": 24,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.608058608058608,
+          "pipeline_confident_accuracy": 0.8855421686746988
+        },
+        {
+          "reject_below": 0.09,
+          "rejected": 45,
+          "rejection_precision": 0.8888888888888888,
+          "larvae_rejected": 5,
+          "deferred": 25,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.6043956043956044,
+          "pipeline_confident_accuracy": 0.8848484848484849
+        },
+        {
+          "reject_below": 0.08,
+          "rejected": 44,
+          "rejection_precision": 0.8863636363636364,
+          "larvae_rejected": 5,
+          "deferred": 26,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.6043956043956044,
+          "pipeline_confident_accuracy": 0.8848484848484849
+        },
+        {
+          "reject_below": 0.07,
+          "rejected": 42,
+          "rejection_precision": 0.8809523809523809,
+          "larvae_rejected": 5,
+          "deferred": 28,
+          "pipeline_accuracy": 0.7655677655677655,
+          "pipeline_coverage": 0.6043956043956044,
+          "pipeline_confident_accuracy": 0.8848484848484849
+        },
+        {
+          "reject_below": 0.06,
+          "rejected": 40,
+          "rejection_precision": 0.9,
+          "larvae_rejected": 4,
+          "deferred": 30,
+          "pipeline_accuracy": 0.7692307692307693,
+          "pipeline_coverage": 0.6007326007326007,
+          "pipeline_confident_accuracy": 0.8902439024390244
+        },
+        {
+          "reject_below": 0.05,
+          "rejected": 34,
+          "rejection_precision": 0.9411764705882353,
+          "larvae_rejected": 2,
+          "deferred": 36,
+          "pipeline_accuracy": 0.7692307692307693,
+          "pipeline_coverage": 0.5934065934065934,
+          "pipeline_confident_accuracy": 0.8950617283950617
+        },
+        {
+          "reject_below": 0.04,
+          "rejected": 30,
+          "rejection_precision": 0.9333333333333333,
+          "larvae_rejected": 2,
+          "deferred": 40,
+          "pipeline_accuracy": 0.7692307692307693,
+          "pipeline_coverage": 0.5934065934065934,
+          "pipeline_confident_accuracy": 0.8950617283950617
+        },
+        {
+          "reject_below": 0.03,
+          "rejected": 25,
+          "rejection_precision": 0.92,
+          "larvae_rejected": 2,
+          "deferred": 45,
+          "pipeline_accuracy": 0.7692307692307693,
+          "pipeline_coverage": 0.5897435897435898,
+          "pipeline_confident_accuracy": 0.8944099378881988
+        },
+        {
+          "reject_below": 0.02,
+          "rejected": 17,
+          "rejection_precision": 0.9411764705882353,
+          "larvae_rejected": 1,
+          "deferred": 53,
+          "pipeline_accuracy": 0.7692307692307693,
+          "pipeline_coverage": 0.5897435897435898,
+          "pipeline_confident_accuracy": 0.8944099378881988
+        },
+        {
+          "reject_below": 0.01,
+          "rejected": 6,
+          "rejection_precision": 1.0,
+          "larvae_rejected": 0,
+          "deferred": 64,
+          "pipeline_accuracy": 0.7692307692307693,
+          "pipeline_coverage": 0.5860805860805861,
+          "pipeline_confident_accuracy": 0.9
+        },
+        {
+          "reject_below": 0.005,
+          "rejected": 1,
+          "rejection_precision": 1.0,
+          "larvae_rejected": 0,
+          "deferred": 69,
+          "pipeline_accuracy": 0.7692307692307693,
+          "pipeline_coverage": 0.5860805860805861,
+          "pipeline_confident_accuracy": 0.9
+        },
+        {
+          "reject_below": 0.002,
+          "rejected": 0,
+          "rejection_precision": null,
+          "larvae_rejected": 0,
+          "deferred": 70,
+          "pipeline_accuracy": 0.7692307692307693,
+          "pipeline_coverage": 0.5860805860805861,
+          "pipeline_confident_accuracy": 0.9
+        },
+        {
+          "reject_below": 0.001,
+          "rejected": 0,
+          "rejection_precision": null,
+          "larvae_rejected": 0,
+          "deferred": 70,
+          "pipeline_accuracy": 0.7692307692307693,
+          "pipeline_coverage": 0.5860805860805861,
+          "pipeline_confident_accuracy": 0.9
+        },
+        {
+          "reject_below": 0.0,
+          "rejected": 0,
+          "rejection_precision": null,
+          "larvae_rejected": 0,
+          "deferred": 70,
+          "pipeline_accuracy": 0.7692307692307693,
+          "pipeline_coverage": 0.5860805860805861,
+          "pipeline_confident_accuracy": 0.9
+        }
+      ]
+    },
+    "lab_validation": {
+      "n": 247,
+      "chosen": {
+        "reject_below": 0.2,
+        "rejected": 68,
+        "rejection_precision": 1.0,
+        "larvae_rejected": 0,
+        "deferred": 1,
+        "pipeline_accuracy": 0.9595141700404858,
+        "pipeline_coverage": 0.9311740890688259,
+        "pipeline_confident_accuracy": 0.9652173913043478
+      },
+      "original_gate": {
+        "reject_below": 0.5,
+        "rejected": 69,
+        "rejection_precision": 0.9855072463768116,
+        "larvae_rejected": 1,
+        "deferred": 0,
+        "pipeline_accuracy": 0.9554655870445344,
+        "pipeline_coverage": 0.9352226720647774,
+        "pipeline_confident_accuracy": 0.961038961038961
+      }
+    }
+  },
   "packaged_mode": "full"
 }

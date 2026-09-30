@@ -1,9 +1,9 @@
 {
   "package": "safezone_v2",
   "mode": "full",
-  "built": "2026-09-14",
-  "file_count": 50,
-  "total_bytes": 371534043,
+  "built": "2026-09-30",
+  "file_count": 53,
+  "total_bytes": 371586158,
   "files": [
     {
       "path": "ATTRIBUTIONS.md",
@@ -12,8 +12,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3978,
-      "sha256": "03775541552dadf9f246f642af71258048e31a015e8ee608af4172787c9ac9de"
+      "bytes": 4135,
+      "sha256": "ddc9fb191c136dbb4cf7a1c0c7861b55bc4b36ec72d54f053aa963a106c6c482"
     },
     {
       "path": "requirements-app.txt",
@@ -76,9 +76,14 @@
       "sha256": "c3774a36aed0c5a08020f4faacf8a353ff2a88bdf565ab995494c1be01bbf4d0"
     },
     {
+      "path": "results/v2/final/end_to_end.json",
+      "bytes": 6239,
+      "sha256": "b4a2b1d7ba0044c7e168882696716f8be790b72f8204f455d159391a6f52d36e"
+    },
+    {
       "path": "results/v2/final/v2_results.json",
-      "bytes": 65161,
-      "sha256": "64467243377c7b7358b04b574a5f9d4d26cddc64ae79e038a184054ce42e0f22"
+      "bytes": 86193,
+      "sha256": "fa90f0a5fd77e85815f23d875e56dddd75544902b714f63b5ede44a1d1e6aed2"
     },
     {
       "path": "results/v2/stage1_resnet50/best_model.pth",
@@ -192,8 +197,8 @@
     },
     {
       "path": "v2/DEPLOY.md",
-      "bytes": 4236,
-      "sha256": "5e62097ffc26ece4da4c22696e9b5b27a972cd905cc208785b1269eddfcef53a"
+      "bytes": 5048,
+      "sha256": "5e84420dfb31d74c4112a4510a1b69feb9ff76fdf9dd9939df5c53e08cc51d62"
     },
     {
       "path": "v2/__init__.py",
@@ -202,13 +207,18 @@
     },
     {
       "path": "v2/api.py",
-      "bytes": 5675,
-      "sha256": "abef9e6a90f97b2da591176878971bef9f48b97aade3f5e4efe736e5b97941d0"
+      "bytes": 6312,
+      "sha256": "b37c1cf2eb69cb786a371fe546b022c3cb5aca3edaf5f1142c71a1c5a3a94a20"
     },
     {
       "path": "v2/app.py",
-      "bytes": 19799,
-      "sha256": "bcfd47ecf7a949d7a78582134e7b2780f68862bb8d87d3519b71b5a4d451d0b6"
+      "bytes": 21235,
+      "sha256": "66f1019340d8e2490b37496583001e924b0f596a18ecd8f4b8217cd777fede8f"
+    },
+    {
+      "path": "v2/calibrate_gate.py",
+      "bytes": 7520,
+      "sha256": "6a122e07f42dd1c5b801d48691ce9be5e8d4eaedc00edef894f6e871f200b4dc"
     },
     {
       "path": "v2/calibrate_lite.py",
@@ -219,6 +229,11 @@
       "path": "v2/curate.py",
       "bytes": 12588,
       "sha256": "335ebe2b90872e7c9a6a9e9d90af840796b47418ed43264071057bfc364d866d"
+    },
+    {
+      "path": "v2/eval_end_to_end.py",
+      "bytes": 8271,
+      "sha256": "1cf1269a09b8ded1c2d0f04168a5485ae05a27dc87625babcaad37156cfe9369"
     },
     {
       "path": "v2/evaluate.py",
@@ -232,13 +247,13 @@
     },
     {
       "path": "v2/package.py",
-      "bytes": 15092,
-      "sha256": "2fc331d2b0ddf7038cefcfb71067f08c50077b22c13bf36299d75e8473bfc21a"
+      "bytes": 16677,
+      "sha256": "d0afc5659eb8534a1fcc078d17925bfc744b9ccda0e724f003995d06cc797a6d"
     },
     {
       "path": "v2/pipeline.py",
-      "bytes": 10632,
-      "sha256": "5c1cea561a8890a31b7b4b74411f64cbba50b7ed139a8f3bfa840f0fcad33fa8"
+      "bytes": 15058,
+      "sha256": "be43512bb63d6c856e497612affcca440284b80a3f022fca15ffdc424d4a5939"
     },
     {
       "path": "v2/report.py",

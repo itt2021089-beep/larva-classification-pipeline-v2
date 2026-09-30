@@ -30,7 +30,10 @@ SAFEZONE_MODE=lite venv/Scripts/python.exe -m streamlit run v2/app.py
 | `full` | ResNet-50 + ConvNeXt-T + EffNetV2-S + EffNetV2-S@320 | **352 MB** | 0.7781 | 0.91 |
 | `lite` | ResNet-50 + ConvNeXt-T | **196 MB** | 0.7749 | 0.99 |
 
-**Lite costs 0.003 macro-F1 and runs ~3× faster.** Its threshold is calibrated
+**Lite runs ~3× faster, and costs more than validation suggested.** On field
+validation it gave up only 0.003 macro-F1, but on the field **test** set the
+whole pipeline is 68.2% accurate against 72.2% for full — about 4 points. Use
+full wherever the hardware allows. Its threshold is calibrated
 separately (`v2/calibrate_lite.py`) because a single model's confidence
 distribution is not the ensemble's — reusing the ensemble's 0.91 would silently
 move the operating point.
@@ -92,10 +95,20 @@ CPU PyTorch is likely to exceed the free tier's memory.
 ## What the app deliberately does
 
 It shows an **uncertain** result as an instruction ("retake the photo"), not as
-a species. On the held-out field test set it answers 49% of photos at 89.9%
-accuracy; forced to answer everything it is 72.2% accurate. A PHI officer
-acting on a confident wrong genus produces a bad surveillance record, while a
-retake costs ten seconds.
+a species. Measured end to end — the larva check and the species classifier
+together — on the 381-photo held-out field test set, the full build answers
+51% of photos at 88.7% accuracy; forced to answer everything it is 72.2%
+accurate. The lite build is lower: 68.2%, and 84.7% on the 48% it answers.
+A PHI officer acting on a confident wrong genus produces a bad surveillance
+record, while a retake costs ten seconds.
+
+Both figures come from `results/v2/final/end_to_end.json`
+(`python -m v2.eval_end_to_end`), which the app sidebar, the API description
+and the package README all read — do not type accuracy figures in by hand.
+
+Stage 1 no longer rejects every image it leans against. When it is unsure it
+defers to Stage 2, which can still say "retake"; the rejection threshold is
+calibrated on validation by `python -m v2.calibrate_gate`.
 
 The sidebar states the measured accuracy and the known limitations — no Sri
 Lankan specimens, Aedes/Culex confusability, citizen-science labels. Please

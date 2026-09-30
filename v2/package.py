@@ -118,9 +118,12 @@ print("OK - every file matches the manifest.")
 '''
 
 
-def readme(mode, models, cal, n_samples):
-    tf = (cal.get("test") or {}).get("test_field") or {}
-    tl = (cal.get("test") or {}).get("test_lab") or {}
+def readme(mode, models, cal, e2e, n_samples):
+    # Accuracy is the WHOLE pipeline's, for THIS build (see
+    # v2.pipeline.end_to_end_results). The calibration file's test block is
+    # Stage 2 alone and full-build only, and quoting it overstated the system.
+    f = e2e["splits"]["test_field"]
+    lab = e2e["splits"]["test_lab"]
     thr = cal["abstention_threshold"]
     return """# Safe Zone AI v2 — mosquito larva classifier
 
@@ -149,8 +152,8 @@ Three possible outcomes per photo:
 | result | what it means | what to do |
 |---|---|---|
 | **Aedes / Anopheles / Culex** | confident identification | record it |
-| **Retake the photo** | below %.0f%% confidence | photograph the specimen again, closer and steadier |
-| **Not a mosquito larva** | Stage 1 rejected it | check it really is a mosquito larva |
+| **Retake the photo** | below %.0f%% confidence — or unsure it is a larva at all | photograph the specimen again, closer and steadier |
+| **Not a mosquito larva** | the larva check is confident it is not one | check it really is a mosquito larva |
 
 **"Retake" is a real answer, not a failure.** Forced to answer every field
 photo the system is %.1f%% accurate; on the photos it is confident about it is
@@ -165,8 +168,9 @@ retake.
 | Real smartphone field photos — when confident (%.0f%% of them) | **%.1f%%** |
 | Laboratory / microscope images | **%.1f%%** |
 
-Measured on %d held-out field photographs and %d laboratory images, neither
-used for training or for setting the confidence threshold.
+These are the **whole pipeline** — the larva check and the species classifier
+together — for this build, measured on %d held-out field photographs and %d
+laboratory images, neither used for training or for setting any threshold.
 
 ### What it cannot do
 
@@ -220,13 +224,13 @@ Built %s · ICT 4808 Group 08, Rajarata University of Sri Lanka.
 Field photographs sourced from iNaturalist under CC licences — see
 `ATTRIBUTIONS.md`.
 """ % (n_samples, 100 * thr,
-       100 * (tf.get("full") or {}).get("accuracy", 0),
-       100 * (tf.get("gated") or {}).get("accuracy", 0),
-       100 * (tf.get("full") or {}).get("accuracy", 0),
-       100 * tf.get("coverage", 0),
-       100 * (tf.get("gated") or {}).get("accuracy", 0),
-       100 * (tl.get("full") or {}).get("accuracy", 0),
-       (tf.get("full") or {}).get("n", 0), (tl.get("full") or {}).get("n", 0),
+       100 * f["pipeline"]["accuracy"],
+       100 * f["pipeline"]["gated_accuracy"],
+       100 * f["pipeline"]["accuracy"],
+       100 * f["pipeline"]["coverage"],
+       100 * f["pipeline"]["gated_accuracy"],
+       100 * lab["pipeline"]["accuracy"],
+       f["n"], lab["n"],
        n_samples, mode, ", ".join(models), date.today().isoformat())
 
 
@@ -283,6 +287,28 @@ def build(mode, args):
                                      "v2_results.json"), "w",
                         encoding="utf-8"), indent=2)
 
+    # The build's measured end-to-end accuracy. Refuse to package without it,
+    # or with figures measured under different thresholds than the ones being
+    # shipped: the app and README would then state a number this build does
+    # not achieve, which is exactly the drift this check exists to stop.
+    e2e_path = os.path.join(ROOT, "results", "v2", "final", "end_to_end.json")
+    e2e = (json.load(open(e2e_path, encoding="utf-8")).get(mode)
+           if os.path.exists(e2e_path) else None)
+    if e2e is None:
+        raise SystemExit("no end-to-end results for the %s build - run: "
+                         "SAFEZONE_MODE=%s python -m v2.eval_end_to_end"
+                         % (mode, mode))
+    shipped = (float(cal["abstention_threshold"]),
+               float((cal.get("gate") or {}).get("reject_below", 0.5)))
+    measured = (float(e2e["threshold"]), float(e2e["gate_reject_below"]))
+    if shipped != measured:
+        raise SystemExit("end_to_end.json is stale for the %s build: measured "
+                         "at thresholds %s, shipping %s - re-run "
+                         "v2.eval_end_to_end" % (mode, measured, shipped))
+    json.dump({mode: e2e}, open(os.path.join(pkg, "results", "v2", "final",
+                                             "end_to_end.json"), "w",
+                                encoding="utf-8"), indent=2)
+
     for f in ("ATTRIBUTIONS.md",):
         s = os.path.join(ROOT, "final_datasets_v2", f)
         if os.path.exists(s):
@@ -311,7 +337,7 @@ def build(mode, args):
         with open(os.path.join(pkg, fn), "w", encoding="utf-8", newline=nl) as fh:
             fh.write(body)
     with open(os.path.join(pkg, "README.md"), "w", encoding="utf-8") as fh:
-        fh.write(readme(mode, sorted(keep), cal, n_samples))
+        fh.write(readme(mode, sorted(keep), cal, e2e, n_samples))
 
     # manifest
     files = []
