@@ -1,1 +1,11 @@
+# Line endings are pinned so a checkout is byte-identical to the built package
+# on every platform. Without this, Git for Windows (core.autocrlf=true by
+# default) rewrote text files to CRLF on clone, their SHA-256 no longer matched
+# MANIFEST.json, and verify_package.py told a teammate with a perfectly good
+# copy to "re-download the package".
+* text=auto eol=lf
+# The package writes its Windows launchers with CRLF, so check them out that way.
+*.bat text eol=crlf
+
+# Model checkpoints live in Git LFS (the largest is 107 MB; GitHub's limit is 100 MB).
 *.pth filter=lfs diff=lfs merge=lfs -text

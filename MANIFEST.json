@@ -3,7 +3,7 @@
   "mode": "full",
   "built": "2026-09-30",
   "file_count": 53,
-  "total_bytes": 371586158,
+  "total_bytes": 371586315,
   "files": [
     {
       "path": "ATTRIBUTIONS.md",
@@ -12,8 +12,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4135,
-      "sha256": "ddc9fb191c136dbb4cf7a1c0c7861b55bc4b36ec72d54f053aa963a106c6c482"
+      "bytes": 4292,
+      "sha256": "a4ed7ea826f2e042bb526410ca36adc964810bdda2affc784c90ef44ac1344b1"
     },
     {
       "path": "requirements-app.txt",
@@ -270,5 +270,6 @@
       "bytes": 13904,
       "sha256": "98d0bdb756831e36adf09352d55889fed5d15f4f068ad4039d75f1aee27be868"
     }
-  ]
+  ],
+  "note": "README.md here carries the Hugging Face Space header, so its hash differs from the same file in the zip build."
 }
