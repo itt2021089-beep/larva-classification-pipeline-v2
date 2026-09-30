@@ -48,6 +48,36 @@ def sha256(p, buf=1 << 20):
     return h.hexdigest()
 
 
+TEXT_EXT = {".py", ".md", ".json", ".toml", ".txt", ".sh", ".csv", ".yaml",
+            ".yml", ".cfg", ".ini"}
+
+
+def normalise_line_endings(pkg):
+    """
+    Make every text file LF, and the .bat launchers CRLF, before hashing.
+
+    Without this the package's bytes depended on the machine that built it.
+    Files copied from a Git-for-Windows checkout arrive CRLF, files Python
+    writes in text mode on Windows are CRLF, and files written elsewhere are
+    LF - so MANIFEST.json hashed a mixture no clean checkout could reproduce,
+    and a fresh clone of the package repo failed verify_package.py on 15 files.
+    With one fixed convention, the zip, the repo and any platform agree. The
+    repo's .gitattributes checks files out the same way.
+    """
+    for dp, dns, fns in os.walk(pkg):
+        dns[:] = [d for d in dns if d != "__pycache__"]
+        for fn in fns:
+            ext = os.path.splitext(fn)[1].lower()
+            if ext not in TEXT_EXT and ext != ".bat":
+                continue
+            p = os.path.join(dp, fn)
+            b = open(p, "rb").read()
+            lf = b.replace(b"\r\n", b"\n")
+            out = lf.replace(b"\n", b"\r\n") if ext == ".bat" else lf
+            if out != b:
+                open(p, "wb").write(out)
+
+
 def copytree(src, dst):
     shutil.copytree(src, dst, ignore=shutil.ignore_patterns(
         "__pycache__", "*.pyc", "*.pyo", "raw_inat", "curation", "_check_v1.py"))
@@ -339,6 +369,8 @@ def build(mode, args):
     with open(os.path.join(pkg, "README.md"), "w", encoding="utf-8") as fh:
         fh.write(readme(mode, sorted(keep), cal, e2e, n_samples))
 
+    normalise_line_endings(pkg)
+
     # manifest
     files = []
     for dp, dns, fns in os.walk(pkg):
@@ -354,7 +386,8 @@ def build(mode, args):
                "built": date.today().isoformat(),
                "file_count": len(files), "total_bytes": total,
                "files": files},
-              open(os.path.join(pkg, "MANIFEST.json"), "w", encoding="utf-8"),
+              open(os.path.join(pkg, "MANIFEST.json"), "w", encoding="utf-8",
+                   newline="\n"),
               indent=2)
     print("  %d files, %.0f MB" % (len(files), total / 1e6))
 
